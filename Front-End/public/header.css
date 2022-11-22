@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+/* header */
+.main-header-nav{
+    position: absolute;
+    margin: 0;
+    background-color: hsl(0, 68%, 32%);
+    width: 100%;
+}
+
+.main-header-nav-ul{       
+    text-align: center;
+}
+.main-header-nav-ul-li{
+    margin-top: 15 px;
+    display: inline-block;
+    list-style: none;
+}
+.main-header-nav-ul-li a{    
+    font-size: 18px;
+    color:azure;
+    text-decoration: none;
+    padding: 10px 10px;    
+}
+
+.main-header-nav-ul-li a:hover{
+    color: black;
+    transition: all 0.4s ease-in-out ;
+}
+
+.main-header-nav-button{
+    padding: .5rem;
+    color: coral;
+    background-color: black;
+    float: right;
+}
