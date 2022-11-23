@@ -1,5 +1,7 @@
 const buyButtons = document.getElementsByClassName('shop-btn');
 const notify = document.getElementById("notification");
+
+
 // console.log(buyButtons)
     for (var i= 0; i<buyButtons.length; i++){
         const buyButton = buyButtons[i];
@@ -38,4 +40,44 @@ const notify = document.getElementById("notification");
         cartRow.innerHTML=cartContent
         const cartItems = document.getElementsByClassName('cart-items')[0];
         cartItems.appendChild(cartRow);
+    }
+
+    // to get products from back-end
+
+    window.addEventListener('DOMContentLoaded',showOnScreen)
+
+    
+    async function showOnScreen (){
+        const product = document.createElement('div');
+        try{
+            const jsonData =  await axios.get('http://localhost:3000/products')
+            // console.log(jsonData);
+            const data=jsonData.data.products
+                        
+            for (let i=0; i<data.length; i++){
+                        let productContent = `
+                        <h3 class="item-title">${data[i].title}</h3>
+                        <div class="img-cont">
+                            <img class="product-imgs" src="${data[i].imageUrl}" alt="${data[i].title}">
+                        </div>
+                        <div class="product-details">
+                            <span class="price">${data[i].price}</span>
+                            <button class="shop-btn" type='button'>ADD TO CART</button>
+                        </div>
+            `
+            product.innerHTML+=productContent;
+            const container = document.getElementById('Album-container');
+            container.appendChild(product)
+            }
+            
+            
+            
+        }
+        catch{(err)=>{
+            console.log(err);
+            productContent= "Something Went Wrong";
+            product.innerHTML=productContent;
+            container.appendChild(product);        
+        }
+        }
     }
