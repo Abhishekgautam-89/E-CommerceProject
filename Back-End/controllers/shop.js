@@ -1,11 +1,34 @@
 const Product = require("../models/product");
 const Cart = require("../models/cart");
+const cartList= require('../models/cart-item')
 
+const itemsPerPage = 2;
 exports.getProducts = (req, res, next) => {
-  Product.findAll()
+  let pageNumber = req.query.page;
+  let totalProducts;
+  Product.count()
+    .then(numberOfProducts=>{
+      totalProducts = numberOfProducts;
+      return Product.findAll({
+        offset: (pageNumber-1)*itemsPerPage,
+        limit:itemsPerPage 
+      })
+                            
+    })     
     .then((products) => {
       // console.log(products);
-      res.status(200).json({ prods: products});
+      const productData={
+        products: products,
+        totalProducts: totalProducts,
+        hasNextPage: (itemsPerPage*pageNumber)<totalProducts,
+        hasPreviousPage: pageNumber>1,
+        nextPage: parseInt(pageNumber) + 1,
+        currentPage: parseInt(pageNumber),
+        previousPage: parseInt(pageNumber)-1,
+        lastPage: Math.ceil(totalProducts/itemsPerPage),
+        firstPage:1
+      }
+      res.status(200).json({ prods: productData});
       // res.render('shop/product-list', {
       //   prods: products,
       //   pageTitle: 'All Products',
@@ -54,11 +77,33 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
+  const pageNumber=req.query.page;
+  let totalNumber;
   req.user.getCart()
   .then((cart) => {
-    return cart.getProducts()
+    cartList.count()
+      .then(numberOfProducts=>{
+        totalNumber=numberOfProducts
+        return cart.getProducts({
+          offset: (pageNumber-1)*itemsPerPage,
+          limit:itemsPerPage
+        })
+      })    
       .then((products) => {
-        res.status(201).json({products : products});
+        const dataOfProducts={
+          products: products,
+          totalNumber: totalNumber,
+
+          hasNextPage: (itemsPerPage*pageNumber)<totalNumber,
+          hasPreviousPage: pageNumber>1,
+
+          nextPage:  parseInt(pageNumber)+1,
+          currentPage: parseInt(pageNumber),
+          previousPage: parseInt(pageNumber)-1,
+
+          lastPage: Math.ceil(totalNumber/itemsPerPage)
+        }
+        res.status(201).json({prods : dataOfProducts });
       })
       .catch((err) => console.log(err));
   })

@@ -37,7 +37,7 @@
 
                 </ul>
 
-                <button class="main-header-nav-button" id="top-cart-btn"> Cart </button>
+                <button class="main-header-nav-button cart" id="top-cart-btn"> Cart </button>
             </nav>
 
         </header>
@@ -55,7 +55,7 @@
                 <h2>MUSIC</h2>
     
                 <div class="Album-container" id="Album-container">
-    
+                    
                     <!-- <div class="Album-1">
                         <h3 class="item-title">Album 1</h3>
                         <div class="img-cont">
@@ -98,18 +98,18 @@
                             <span class="price">$19.99</span>
                             <button class="shop-btn" type='button'>ADD TO CART</button>
                         </div>
-                    </div>
+                    </div>-->
     
-                </div> -->
+                </div> 
     
             </section>
     
 
 
 
-            <section class="merch-container">
-                <h2>MERCH</h2>
-                <div class="product-container" id="product-container">
+            <!-- <section class="merch-container"> -->
+                <!-- <h2>MERCH</h2> -->
+                <!-- <div class="product-container" id="product-container">
                     <div>
                         <h3 class="item-title">T-Shirt</h3>
                         <div class="img-cont">
@@ -130,11 +130,14 @@
                             <button class="shop-btn" type='button'>ADD TO CART</button>
                         </div>
                     </div>
-                </div>
-            </section>
+                </div> -->
+            <!-- </section> -->
+            <div class="pagination" id="page-pagination">
+
+            </div>
     
             <div class="cart-button-div" id="cart-button-div">
-                <button class="cart-button-div-button" id="bottom-cart-btn"> See Cart </button>
+                <button class="cart-button-div-button cart" id="bottom-cart-btn"> See Cart </button>
             </div>
 
 
@@ -148,6 +151,7 @@
                     <span class="cart-price cart-header cart-column">PRICE</span>
                     <span class="cart-quantity cart-header cart-column">QUANTITY</span>
                 </div>
+
                 <div class="cart-items">
                     
                 </div>
@@ -155,7 +159,9 @@
                     <strong class="cart-total-title">Total</strong>
                     <span class="cart-total-price">$0</span>
                 </div>
+                <div class="pagination" id="cart-pagination"></div>
                 <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+                
             </section>
             <div id="notification"></div>
         </div>
@@ -198,7 +204,7 @@
             </nav>
         </footer>
     </body>
-    <script src="../scripts/store.js"></script>   
+    <script async src="../scripts/store.js"></script>   
     <script src="../scripts/style.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"></script>
     

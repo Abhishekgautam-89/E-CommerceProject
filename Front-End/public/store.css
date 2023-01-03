@@ -112,24 +112,32 @@
     right: 10px;
 }
 
-.page-buttons {
+.pagination {
     position: relative;
     left: 45%;
     margin: 1rem 0.5rem;
-    width: 2rem;
-    height: 2rem;
-    border: 2px solid #4980ef;
+    /* width: 5rem; */
+    /* height: 2rem; */
+    /* border: 2px solid #4980ef; */
+    /* background-color: rgb(171, 203, 202); */
+    /* border-radius: 10px; */
+}
+.pagination button{
     background-color: rgb(171, 203, 202);
-    border-radius: 10px;
+    /* border-color: rgb(171, 203, 202); */
+}
+.pagination button:hover{
+    color: rgb(171, 203, 202);
+    background-color: black;
+    cursor: pointer;
+}
+.pagination:hover,
+.pagination:active {
+    /* background-color: #4980ef; */
+    /* color: white; */
 }
 
-.page-buttons:hover,
-.page-buttons:active {
-    background-color: #4980ef;
-    color: white;
-}
-
-.page-buttons.active {
+.pagination.active {
     background-color: #4980ef;
     color: white;
 }
